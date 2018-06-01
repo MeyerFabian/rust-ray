@@ -14,6 +14,9 @@ use materials::plastic::Plastic;
 
 pub fn run() {
     println!("API initialized.");
+
+    let camera = PerspectiveCamera::new(Vector3::new(0.0,0.0,0.0));
+
     let mut shapes: Vec<Box<Shape>> = Vec::new();
     shapes.push(Box::new(Sphere::new(Vector3::new(0.0,0.0,0.0),0.5)));
     shapes.push(Box::new(Sphere::new(Vector3::new(0.0,0.0,0.0),0.5)));
@@ -28,7 +31,6 @@ pub fn run() {
     let scene = Scene::new(shapes,materials,lights);
     scene.intersect();
 
-    let camera = PerspectiveCamera::new(Vector3::new(0.0,0.0,0.0));
 
     let buffer: Vec<u8> = [100;800*600*3].to_vec(); // Generate the image date
     // Save the buffer as "image.png"
