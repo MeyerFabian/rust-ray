@@ -11,8 +11,8 @@ impl Scene{
     pub fn new(shapes:Vec<Box<Shape>>, materials:Vec<Box<Material>>, lights:Vec<Box<Light>>)-> Scene{
         Scene{shapes,materials, lights}
     }
-    pub fn intersect(self){
-        for shape in self.shapes{
+    pub fn intersect(&self){
+        for shape in self.shapes.iter(){
             shape.intersect();
         }
     }

@@ -1,16 +1,18 @@
 use cgmath::Vector3;
 use image;
+use std::rc::Rc;
 
 use core::shape::Shape;
 use core::scene::Scene;
-use core::camera::Camera;
 use core::light::Light;
 use core::material::Material;
+use core::integrator::Integrator;
 
 use shapes::sphere::Sphere;
 use cameras::persp_camera::PerspectiveCamera;
 use lights::point::PointLight;
 use materials::plastic::Plastic;
+use integrators::simple_integrator::SimpleIntegrator;
 
 pub fn run() {
     println!("API initialized.");
@@ -28,11 +30,10 @@ pub fn run() {
     lights.push(Box::new(PointLight::new(Vector3::new(0.0,0.0,0.0))));
 
     let scene = Scene::new(shapes,materials,lights);
+    let camera = PerspectiveCamera::new(Vector3::new(0.0,0.0,0.0));
 
-    let camera: Box<Camera>  = Box::new(PerspectiveCamera::new(Vector3::new(0.0,0.0,0.0)));
-    let _ = camera.generate_rays(); 
-    scene.intersect();
-
+    let integrator = SimpleIntegrator::new(Rc::new(camera));
+    integrator.render(Rc::new(scene));
 
     let buffer: Vec<u8> = [100;800*600*3].to_vec(); // Generate the image date
     // Save the buffer as "image.png"
