@@ -33,7 +33,7 @@ pub fn run() {
     let camera = PerspectiveCamera::new(Vector3::new(0.0,0.0,0.0));
 
     let integrator = SimpleIntegrator::new(Rc::new(camera));
-    integrator.render(Rc::new(scene));
+    integrator.render(&scene);
 
     let buffer: Vec<u8> = [100;800*600*3].to_vec(); // Generate the image date
     // Save the buffer as "image.png"

@@ -12,7 +12,7 @@ impl SimpleIntegrator{
     }
 }
 impl Integrator for SimpleIntegrator{
-    fn render(&self, scene: Rc<Scene>){
+    fn render(&self, scene: &Scene){
         self.camera.generate_rays();
         scene.intersect();
     }
