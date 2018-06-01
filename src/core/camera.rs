@@ -1,3 +1,3 @@
 pub trait Camera{
-    fn generate_rays(self);
+    fn generate_rays(&self);
 }

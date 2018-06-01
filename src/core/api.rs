@@ -15,7 +15,8 @@ use materials::plastic::Plastic;
 pub fn run() {
     println!("API initialized.");
 
-    let camera = PerspectiveCamera::new(Vector3::new(0.0,0.0,0.0));
+    let camera: Box<Camera>  = Box::new(PerspectiveCamera::new(Vector3::new(0.0,0.0,0.0)));
+    let _ = camera.generate_rays(); 
 
     let mut shapes: Vec<Box<Shape>> = Vec::new();
     shapes.push(Box::new(Sphere::new(Vector3::new(0.0,0.0,0.0),0.5)));
