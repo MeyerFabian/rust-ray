@@ -4,3 +4,13 @@ version = "0.1.0"
 authors = ["MeyerFabian <fabian.meyer1337@web.de>"]
 
 [dependencies]
+cgmath = "0.16"
+image = "0.19"
+
+[lib]
+name = "ray"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ray_bin"
+path = "src/main/main.rs"
