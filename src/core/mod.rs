@@ -1,7 +1,9 @@
 pub mod api;
-pub mod shape;
-pub mod scene;
 pub mod camera;
+pub mod integrator;
 pub mod light;
 pub mod material;
-pub mod integrator;
+pub mod math;
+pub mod primitive;
+pub mod scene;
+pub mod shape;

@@ -1,9 +1,9 @@
-extern crate image;
 extern crate cgmath;
+extern crate image;
 
-pub mod core;
-pub mod shapes;
 pub mod cameras;
+pub mod core;
+pub mod integrators;
 pub mod lights;
 pub mod materials;
-pub mod integrators;
+pub mod shapes;

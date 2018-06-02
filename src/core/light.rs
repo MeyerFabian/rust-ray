@@ -1,3 +1,3 @@
-pub trait Light{
+pub trait Light {
     fn power(&self);
 }
