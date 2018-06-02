@@ -6,6 +6,7 @@ authors = ["MeyerFabian <fabian.meyer1337@web.de>"]
 [dependencies]
 cgmath = "0.16"
 image = "0.19"
+rayon = "1.0.1"
 
 [lib]
 name = "ray"

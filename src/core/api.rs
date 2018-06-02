@@ -14,7 +14,6 @@ use materials::plastic::Plastic;
 use shapes::sphere::Sphere;
 
 pub fn run() {
-    println!("API initialized.");
     let mut primitives: Vec<Primitive> = Vec::new();
 
     primitives.push(Primitive::new(
@@ -35,9 +34,9 @@ pub fn run() {
         Vector3::new(0.0, 0.0, -1.0),
         Vector3::new(0.0, 1.0, 0.0),
         Vector3::new(1.0, 0.0, 0.0),
-        Vector2::new(800, 600),
+        Vector2::new(1920, 1080),
     );
 
-    let integrator = SimpleIntegrator::new(Rc::new(camera));
+    let integrator = SimpleIntegrator::new(Box::new(camera));
     integrator.render(&scene);
 }

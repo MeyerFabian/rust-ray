@@ -37,6 +37,12 @@ impl Camera for PerspectiveCamera {
         self.viewport
     }
     fn write_image(&self, buffer: &[u8]) {
-        image::save_buffer("image.png", &buffer, 800, 600, image::RGB(8)).unwrap()
+        image::save_buffer(
+            "image.png",
+            &buffer,
+            self.viewport.x,
+            self.viewport.y,
+            image::RGB(8),
+        ).unwrap()
     }
 }

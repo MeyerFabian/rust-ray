@@ -10,15 +10,20 @@ impl Scene {
     pub fn new(primitives: Vec<Primitive>, lights: Vec<Box<Light>>) -> Scene {
         Scene { primitives, lights }
     }
-    pub fn intersect(&self, ray: &Ray) -> f32 {
-        let mut closest_intersect: f32 = 1.0;
-        for primitive in self.primitives.iter() {
-            let hit = primitive.shape.intersect(&ray);
-            match hit {
-                Some(x) => closest_intersect = closest_intersect.min(x),
-                None => (),
-            }
-        }
-        closest_intersect
+    pub fn intersect(&self, ray: &Ray) -> Option<f32> {
+        self.primitives
+            .iter()
+            .map(|primitive| primitive.shape.intersect(&ray))
+            .fold(None, |acc, t| match t {
+                Some(cand) => match (acc) {
+                    Some(cur_min) => if cand < cur_min {
+                        Some(cand)
+                    } else {
+                        Some(cur_min)
+                    },
+                    None => Some(cand),
+                },
+                None => acc,
+            })
     }
 }

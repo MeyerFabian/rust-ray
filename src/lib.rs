@@ -1,6 +1,6 @@
 extern crate cgmath;
 extern crate image;
-
+extern crate rayon;
 pub mod cameras;
 pub mod core;
 pub mod integrators;

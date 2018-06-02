@@ -1,3 +1,3 @@
-pub trait Light {
+pub trait Light: Sync {
     fn power(&self);
 }
