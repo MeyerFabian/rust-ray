@@ -1,6 +1,4 @@
 use cgmath::{Vector2, Vector3};
-use image;
-use std::rc::Rc;
 
 use core::integrator::Integrator;
 use core::light::Light;
@@ -17,23 +15,23 @@ pub fn run() {
     let mut primitives: Vec<Primitive> = Vec::new();
 
     primitives.push(Primitive::new(
-        Box::new(Sphere::new(Vector3::new(0.6, 0.0, -0.75), 0.5)),
-        Box::new(Plastic::new()),
+        Box::new(Sphere::new(Vector3::new(-0.3, 0.1, -0.75), 0.15)),
+        Box::new(Plastic::new(Vector3::new(0, 255, 0))),
     ));
 
     primitives.push(Primitive::new(
-        Box::new(Sphere::new(Vector3::new(0.0, 0.1, -0.75), 0.25)),
-        Box::new(Plastic::new()),
+        Box::new(Sphere::new(Vector3::new(0.3, 0.1, -0.75), 0.15)),
+        Box::new(Plastic::new(Vector3::new(255, 0, 0))),
     ));
 
     primitives.push(Primitive::new(
         Box::new(Sphere::new(Vector3::new(0.0, -500.2, 0.0), 500.0)),
-        Box::new(Plastic::new()),
+        Box::new(Plastic::new(Vector3::new(0, 0, 255))),
     ));
 
     let mut lights: Vec<Box<Light>> = Vec::new();
-    lights.push(Box::new(PointLight::new(Vector3::new(0.0, 1.0, 1.0))));
-
+    lights.push(Box::new(PointLight::new(Vector3::new(0.5, 1.0, 1.0))));
+    lights.push(Box::new(PointLight::new(Vector3::new(-0.5, 1.0, 1.0))));
     let scene = Scene::new(primitives, lights);
     let camera = PerspectiveCamera::new(
         Vector3::new(0.0, 0.0, 0.0),

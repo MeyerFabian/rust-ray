@@ -12,4 +12,7 @@ impl Light for PointLight {
     fn power(&self) {
         //TODO give back power
     }
+    fn position(&self) -> Vector3<f32> {
+        self.origin
+    }
 }
