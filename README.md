@@ -1,3 +1,3 @@
 # rust-ray
 raytracer in rust
-[[image.png]]
+<img src = "image.png" width=600>
