@@ -32,11 +32,11 @@ impl Integrator for SimpleIntegrator {
                         let closest_hit = scene.intersect(&ray);
                         let mut color: u8 = 255;
                         if let Some(t) = closest_hit {
-                            color = (t * 255.0) as u8;
+                            color = f32::min(255.0, (t * 255.0)) as u8;
                         }
                         (
                             x as u32,
-                            y as u32,
+                            (viewport.y - 1 - y) as u32,
                             Rgb {
                                 data: [color, color, color],
                             },

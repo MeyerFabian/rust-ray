@@ -22,8 +22,10 @@ impl Shape for Sphere {
         match res {
             Some((t1, t2)) => if t1 >= 0.0 {
                 Some(t1)
-            } else {
+            } else if (t2 >= 0.0) {
                 Some(t2)
+            } else {
+                None
             },
             None => None,
         }

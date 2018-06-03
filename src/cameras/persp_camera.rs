@@ -28,7 +28,8 @@ impl PerspectiveCamera {
 }
 impl Camera for PerspectiveCamera {
     fn generate_ray(&self, pixel: Vector2<u32>) -> Ray {
-        let xpart = (pixel.x as f32) / (self.viewport.x as f32) - 0.5;
+        let aspect_ratio = self.viewport.x as f32 / self.viewport.y as f32;
+        let xpart = ((pixel.x as f32) / (self.viewport.x as f32) - 0.5) * aspect_ratio;
         let ypart = (pixel.y as f32) / (self.viewport.y as f32) - 0.5;
 
         Ray::new(self.origin, Vector3::new(xpart, ypart, -1.0).normalize())

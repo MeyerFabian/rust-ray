@@ -22,9 +22,15 @@ pub fn run() {
     ));
 
     primitives.push(Primitive::new(
-        Box::new(Sphere::new(Vector3::new(0.0, 0.0, -0.75), 0.25)),
+        Box::new(Sphere::new(Vector3::new(0.0, 0.1, -0.75), 0.25)),
         Box::new(Plastic::new()),
     ));
+
+    primitives.push(Primitive::new(
+        Box::new(Sphere::new(Vector3::new(0.0, -500.2, 0.0), 500.0)),
+        Box::new(Plastic::new()),
+    ));
+
     let mut lights: Vec<Box<Light>> = Vec::new();
     lights.push(Box::new(PointLight::new(Vector3::new(0.0, 1.0, 1.0))));
 
